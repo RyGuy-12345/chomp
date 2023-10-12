@@ -32,9 +32,9 @@ def draw_background(screen):
         screen.blit(sand, (x,screen_height-tile_size))
 
     #seagrass
-    for _ in range(4):
+    for _ in range(7):
         x = random.randint(0,screen_width)
-        screen.blit(seagrass, (x, screen_height- tile_size))
+        screen.blit(seagrass, (x, screen_height- tile_size*2+5))
 
 
 running = True
