@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+from fish import Fish, fishes
 
 pygame.init()
 
@@ -38,35 +39,15 @@ def draw_background(screen):
     screen.blit(text, (screen_width/2-text.get_width()/2, screen_height/7-text.get_height()/2))
 
 
-def draw_fish(screen):
-    green_fish = pygame.image.load("sprites/green_fish.png").convert()
-    green_fish.set_colorkey((0,0,0))
-    puffer_fish = pygame.image.load("sprites/puffer_fish.png").convert()
-    puffer_fish.set_colorkey((0,0,0))
-    nemo = pygame.image.load("sprites/orange_fish.png").convert()
-    nemo.set_colorkey((0,0,0))
-
-
-    for _ in range(5):
-        x = random.randint(0, screen_width-tile_size)
-        y = random.randint(0, screen_height-tile_size*2)
-        screen.blit(green_fish, (x,y))
-
-    for a in range(5):
-        x = random.randint(0, screen_width-tile_size)
-        y = random.randint(0, screen_height-tile_size*2)
-        screen.blit(pygame.transform.flip(puffer_fish, 1, 0), (x,y))
-
-    for b in range(5):
-        x = random.randint(0, screen_width - tile_size)
-        y = random.randint(0, screen_height - tile_size*2)
-        screen.blit(nemo, (x,y))
-
 #main loop
 running = True
 background = screen.copy()
 draw_background(background)
-draw_fish(background)
+
+
+for a in range(5):
+    fishes.add(Fish(random.randint(0, screen_width - tile_size), random.randint(0, screen_height - tile_size*2)))
+
 
 while running:
     for event in pygame.event.get():
@@ -74,5 +55,8 @@ while running:
             running = False
 
     screen.blit(background, (0,0))
+
+    fishes.draw(background)
     pygame.display.flip()
+    
 pygame.quit()
