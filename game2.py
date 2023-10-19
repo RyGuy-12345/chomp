@@ -11,12 +11,12 @@ tile_size = 64
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Ocean")
 
-custom_font = pygame.font.Font("../labs/L8/fonts/Brainfish_Rush.ttf")
+custom_font = pygame.font.Font("fonts/Black_Crayon.ttf", 115)
 
 def draw_background(screen):
-    water = pygame.image.load("../labs/L7/sprites/water.png").convert()
-    sand = pygame.image.load("../labs/L7/sprites/sand_top.png").convert()
-    seagrass = pygame.image.load("../labs/L7/sprites/seagrass.png").convert()
+    water = pygame.image.load("sprites/water.png").convert()
+    sand = pygame.image.load("sprites/sand_top.png").convert()
+    seagrass = pygame.image.load("sprites/seagrass.png").convert()
     sand.set_colorkey((0, 0, 0))
     seagrass.set_colorkey((0, 0, 0))
 
@@ -35,12 +35,37 @@ def draw_background(screen):
 
 
     text = custom_font.render("chomp", True, (255, 29, 0))
-    screen.blit(text, (screen_width/2-text.get_width()/2, screen_height/2-text.get_height()/2))
+    screen.blit(text, (screen_width/2-text.get_width()/2, screen_height/7-text.get_height()/2))
 
+
+def draw_fish(screen):
+    green_fish = pygame.image.load("sprites/green_fish.png").convert()
+    green_fish.set_colorkey((0,0,0))
+    puffer_fish = pygame.image.load("sprites/puffer_fish.png").convert()
+    puffer_fish.set_colorkey((0,0,0))
+    nemo = pygame.image.load("sprites/orange_fish.png").convert()
+    nemo.set_colorkey((0,0,0))
+
+
+    for _ in range(5):
+        x = random.randint(0, screen_width-tile_size)
+        y = random.randint(0, screen_height-tile_size*2)
+        screen.blit(green_fish, (x,y))
+
+    for a in range(5):
+        x = random.randint(0, screen_width-tile_size)
+        y = random.randint(0, screen_height-tile_size*2)
+        screen.blit(pygame.transform.flip(puffer_fish, 1, 0), (x,y))
+
+    for b in range(5):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(0, screen_height - tile_size*2)
+        screen.blit(nemo, (x,y))
 
 running = True
 background = screen.copy()
 draw_background(background)
+draw_fish(background)
 
 while running:
     for event in pygame.event.get():
