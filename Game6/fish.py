@@ -1,15 +1,14 @@
-#create a pygame sprite class for a fish
 import random
 
 import pygame
-
-MIN_SPEED = 1.5
+from game_paramaters import *
+MIN_SPEED = 0.5
 MAX_SPEED = 3.5
 
 class Fish(pygame.sprite.Sprite):
     def __init__(self, x,y):
         super().__init__()
-        self.image = pygame.image.load("assets/sprites/green_fish.png").convert()
+        self.image = pygame.image.load("../assets/sprites/green_fish.png").convert()
         self.image.set_colorkey((0,0,0))
         self.image = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()

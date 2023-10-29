@@ -12,12 +12,12 @@ tile_size = 64
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Ocean")
 
-custom_font = pygame.font.Font("fonts/Black_Crayon.ttf", 115)
+custom_font = pygame.font.Font("assets/fonts/Black_Crayon.ttf", 115)
 
 def draw_background(screen):
-    water = pygame.image.load("sprites/water.png").convert()
-    sand = pygame.image.load("sprites/sand_top.png").convert()
-    seagrass = pygame.image.load("sprites/seagrass.png").convert()
+    water = pygame.image.load("assets/sprites/water.png").convert()
+    sand = pygame.image.load("assets/sprites/sand_top.png").convert()
+    seagrass = pygame.image.load("assets/sprites/seagrass.png").convert()
     sand.set_colorkey((0, 0, 0))
     seagrass.set_colorkey((0, 0, 0))
 
