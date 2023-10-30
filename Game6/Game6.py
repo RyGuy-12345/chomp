@@ -43,7 +43,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         #control player fish
-        player.stop()
+        #player.stop()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 player.move_up()
@@ -53,6 +53,8 @@ while running:
                 player.move_left()
             if event.key == pygame.K_RIGHT:
                 player.move_right()
+        if event.type == pygame.KEYUP:
+            player.stop()
 
 
     screen.blit(background, (0, 0))
